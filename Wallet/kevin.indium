@@ -1,0 +1,13 @@
+{
+    "WalletAddress": "ABCDEF",
+    "PublicKey": "ABC",
+    "PrivateKey": "ABC",
+    "Transactions": [
+        {
+            "To": "Kevin",
+            "Amount": 42000000000,
+            "Hash": "abc123def456",
+            "BlockHeight": 32400
+        }
+    ]
+}
