@@ -20,8 +20,8 @@ jobs:
 
     #TODO: Maybe add main package.json in root directory?
     steps:
-    - run: cd Wallet/
     - uses: actions/checkout@v2
+    - run: cd Wallet/
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
