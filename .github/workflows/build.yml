@@ -26,6 +26,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install ./Wallet/
+    - run: npm install -g pkg
     - run: pkg ./Wallet/
     - name: Upload Linux Build Artifact
       uses: actions/upload-artifact@v2.2.0
