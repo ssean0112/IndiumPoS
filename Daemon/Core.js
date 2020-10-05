@@ -17,8 +17,8 @@ var Core = {
   },
 
   showLogo: function () {
-    console.log(chalk.hex('#0081a9')(Ascii.Logo) + "\n");
-    console.log(`    ${chalk.hex('#8ed7ed')('Indium Daemon v' + JsonPackage.version + '         Copyright © 2020, ' + JsonPackage.author)}  \n`);
+    console.log(chalk.hex(Colors.standard)(Ascii.Logo) + "\n");
+    console.log('    ' + chalk.hex(Colors.standardLight)(`${Config.CoinName} Daemon v${JsonPackage.version}         Copyright © 2020, ${JsonPackage.author}  \n`));
   }
 }
 
