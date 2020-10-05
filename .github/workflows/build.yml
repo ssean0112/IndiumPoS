@@ -25,27 +25,23 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: cd Wallet
-    - run: npm ci
-    - run: npm install -g pkg
-    - run: npm run build --if-present
-    - run: npm test
-    - run: pkg .
+    - run: npm install ./Wallet/
+    - run: pkg ./Wallet/
     - name: Upload Linux Build Artifact
       uses: actions/upload-artifact@v2.2.0
       with:
         # Artifact name
-        name: indium-linux
+        name: wallet-linux
         # A file, directory or wildcard pattern that describes what to upload
-        path: ./indiumalgo
+        path: ./Wallet/wallet
         # The desired behavior if no files are found using the provided path.
         warn: "Linux file not present"
     - name: Upload Windows Build Artifact
       uses: actions/upload-artifact@v2.2.0
       with:
         # Artifact name
-        name: indium-windows.exe
+        name: wallet-windows.exe
         # A file, directory or wildcard pattern that describes what to upload
-        path: ./indiumalgo.exe
+        path: ./Wallet/wallet.exe
         # The desired behavior if no files are found using the provided path.
         warn: "Windows file not present"
