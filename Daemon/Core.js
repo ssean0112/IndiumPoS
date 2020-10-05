@@ -1,9 +1,13 @@
 const Ascii = require('./Config/Ascii.js');
 const JsonPackage = require('./package.json');
+const Config = require('./Config/Config.js');
+const Colors = require('./Config/Colors.js');
 
 const chalk = require('chalk');
 
 var Core = {
+  currentLogLevel: 1,
+
   Log: function (color, type, msg) {
     console.log(color('[' + type + '] ') + msg);
   },
