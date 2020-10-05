@@ -35,17 +35,13 @@ jobs:
         name: wallet-linux
         # A file, directory or wildcard pattern that describes what to upload
         path: ./wallet-linux
-        # The desired behavior if no files are found using the provided path.
-        warn: "Linux file not present"
     - name: Upload Windows Build Artifact
       uses: actions/upload-artifact@v2.2.0
       with:
         # Artifact name
-        name: wallet-windows.exe
+        name: wallet-windows
         # A file, directory or wildcard pattern that describes what to upload
         path: ./wallet-win.exe
-        # The desired behavior if no files are found using the provided path.
-        warn: "Windows file not present"
     - name: Upload MacOS Build Artifact
       uses: actions/upload-artifact@v2.2.0
       with:
@@ -53,5 +49,3 @@ jobs:
         name: wallet-maxos
         # A file, directory or wildcard pattern that describes what to upload
         path: ./wallet-macos
-        # The desired behavior if no files are found using the provided path.
-        warn: "MacOS file not present"
