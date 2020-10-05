@@ -16,6 +16,8 @@
   "author": "The Indium Team",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^4.1.0"
+    "chalk": "^4.1.0",
+    "fastify": "^3.5.1",
+    "socket.io": "^2.3.0"
   }
 }
