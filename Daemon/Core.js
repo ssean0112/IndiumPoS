@@ -105,6 +105,12 @@ var Core = {
     }
     return result;
   },
+
+  RefreshTitle: function (server) {
+    setInterval(function() {
+      setTitle(`${Config.coinName} Daemon v${Config.buildVersion} ${Config.buildName} | P2P: ${server.engine.clientsCount}/0`);
+    }, 2000);
+  },
 }
 
 module.exports = Core;
