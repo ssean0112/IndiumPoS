@@ -17,6 +17,10 @@ let Blockchain = {
       let block = db.get('blocks').find({ height: i }).value()
 
       if(block == undefined) {
+        // If block 0 is empty then create the first block in the database
+        if(i == 0) {
+          db.get('blocks').push({ height: 0, difficulty: 1000, version: Config.coinNetworkVersion, previousBlockHash: "0000000000000000000000000000000000000000000000000000000000000000", merkleRoot: "0000000000000000000000000000000000000000000000000000000000000000", timestamp: 0 }).write();
+        }
         break;
       } else {
         // Check if block difficulty is a valid type
