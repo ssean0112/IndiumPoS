@@ -14,34 +14,47 @@ const setTitle = require('node-bash-title');
 
 const rpcSocketServer = fastify();
 
-// Show logo and Version
-Core.showLogo();
+(async() => {
+  // Initializing passed arguments
+  Core.InitArguments();
+  setTitle(`${Config.coinName} Daemon v${Config.buildVersion} ${Config.buildName}`);
 
-// Starting RPC server
-rpcFastify.listen(3000, () => {
-  Core.Log(chalk.hex(Colors.skyMagenta), 'RPC', 'RPC server has started at 0.0.0.0:3000');
-});
   // Show help screen when specified
   if(Core.argHelp) {
     Core.showHelp();
   }
 
-// Starting P2P server
-io.listen(3001);
   // Show version
   if(Core.argVersion) {
     Core.showVersion();
   }
 
-// Log
-Core.Log(chalk.hex(Colors.purpleNavi), 'P2P', 'P2P server has started at 0.0.0.0:3000');
+  // Show logo and Version
+  Core.showLogo();
 
-// On P2P
-io.on('connection', socket => {
-  socket.on('', msg => {
+  // Initializing before startup
+  Core.Init();
+  await Core.Sleep(100);
 
+  // Starting RPC server
+  rpcSocketServer.listen((Core.argRpcPort < 65536 ? Core.argRpcPort : 3001), () => {
+    Core.Log(chalk.hex(Colors.skyMagenta), 'RPC', 'RPC server has started at 0.0.0.0:' + (Core.argRpcPort < 65536 ? Core.argRpcPort : 3001));
   });
-});
 
-// RPC requests 
-RPC.getInfo(rpcFastify);
+  // Starting P2P server
+  p2pSocketServer.listen((Core.argP2pPort < 65536 ? Core.argP2pPort : 3000));
+  P2PServer.Init(p2pSocketServer);
+  Core.Log(chalk.hex(Colors.purpleNavi), 'P2P', 'P2P server has started at 0.0.0.0:' + (Core.argP2pPort < 65536 ? Core.argP2pPort : 3000));
+  
+  // RPC requests 
+  RPC.getInfo(rpcSocketServer);
+  await Core.Sleep(1000);
+
+  // Connecting to peer list
+  P2PClient.Init(p2pSocketClient);
+
+  // Start syncing blockchain
+  //Blockchain.sync();
+
+  Core.RefreshTitle(p2pSocketServer);
+})();
