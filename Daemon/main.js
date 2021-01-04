@@ -1,12 +1,18 @@
 const Core = require('./Core.js');
 const Colors = require('./Config/Colors.js');
+const Config = require('./Config/Config.js');
 const RPC = require('./RPC.js');
+const P2PServer = require('./P2PServer.js');
+const P2PClient = require('./P2PClient.js');
+const Blockchain = require('./Blockchain.js');
 
 const fastify = require('fastify');
-const io = require('socket.io')(fastify.server);
+const p2pSocketServer = require('socket.io')(fastify.server);
+const p2pSocketClient = require('socket.io-client');
 const chalk = require('chalk');
+const setTitle = require('node-bash-title');
 
-const rpcFastify = fastify();
+const rpcSocketServer = fastify();
 
 // Show logo and Version
 Core.showLogo();
