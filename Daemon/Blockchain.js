@@ -1,14 +1,14 @@
 const Config = require('./Config/Config.js');
 const Core = require('./Core.js');
-//const JSONdb = require('simple-json-db');
+
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 
-const adapter = new FileSync((Core.argBlockchainFolder ? Core.argBlockchainFolder : 'blockchain') + '/blockchain.json')
-const db = low(adapter)
-
 let Blockchain = {
   check: function (rpc) {
+    const adapter = new FileSync((Core.argBlockchainFolder ? Core.argBlockchainFolder : 'blockchain') + '/blockchain.json')
+    const db = low(adapter)
+    
     // Set default values for the database
     db.defaults({ blocks: [] }).write();
 
