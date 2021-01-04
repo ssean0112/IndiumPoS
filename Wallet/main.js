@@ -106,6 +106,7 @@ const fs = require('fs');
                                     },
                                     {
                                       name: 'Save Wallet                ' + chalk.hex('#8ed7ed')('Restore a wallet from private keys'),
+                                      name: 'Save Wallet                ' + chalk.hex('#8ed7ed')('Save you wallet at this state'),
                                       value: 'restore_keys',
                                     },
                                     {
@@ -119,6 +120,11 @@ const fs = require('fs');
                       ])
                       .then(async (option) => {
 
+                        switch(option.option) {
+                          // Exit case
+                          case 'exit':
+                            process.exit();
+                        }
                       });
                     }
 
