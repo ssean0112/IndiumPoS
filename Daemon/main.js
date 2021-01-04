@@ -22,6 +22,10 @@ rpcFastify.listen(3000, () => {
 
 // Starting P2P server
 io.listen(3001);
+  // Show version
+  if(Core.argVersion) {
+    Core.showVersion();
+  }
 
 // Log
 Core.Log(chalk.hex(Colors.purpleNavi), 'P2P', 'P2P server has started at 0.0.0.0:3000');
