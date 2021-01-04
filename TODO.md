@@ -1,5 +1,6 @@
 ## Mining
 [ ] Android mininig
+[ ] Linux/Windows mining
 
 ## Blockchain
 [ ] Saving blockchain
