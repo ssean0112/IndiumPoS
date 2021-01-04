@@ -47,7 +47,7 @@ const rpcSocketServer = fastify();
   Core.Log(chalk.hex(Colors.purpleNavi), 'P2P', 'P2P server has started at 0.0.0.0:' + (Core.argP2pPort < 65536 ? Core.argP2pPort : 3000));
   
   // RPC requests 
-  RPC.getInfo(rpcSocketServer);
+  RPC.getInfo(rpcSocketServer, p2pSocketServer);
   await Core.Sleep(1000);
 
   // Connecting to peer list

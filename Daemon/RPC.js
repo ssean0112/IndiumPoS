@@ -1,7 +1,8 @@
 const Config = require('./Config/Config.js');
+const Core = require('./Core.js');
 
 let RPC = {
-  getInfo: function (rpc) {
+  getInfo: function (rpc, server) {
     rpc.get('/getinfo', (req, res, next) => {
       res.send({
         'general': {
@@ -11,12 +12,14 @@ let RPC = {
           'buildName': Config.buildName
         },
         'network': {
-          'height': 0,
+          'height': (Core.currentSyncHeight ? Core.currentSyncHeight : 0),
           'networkHeight': 0,
-          'difficulty': 0,
+          'difficulty': Core.currentBlock.difficulty,
           'totalTransactions': 0,
           'hashrate': 0,
           'synced': true,
+          'incommingConnections': server.engine.clientsCount,
+          'outgoingConnections': 0
         }
       });
     });
