@@ -53,8 +53,8 @@ const rpcSocketServer = fastify();
   // Connecting to peer list
   P2PClient.Init(p2pSocketClient);
 
-  // Start syncing blockchain
-  //Blockchain.sync();
+  // Check blockchain validity
+  Blockchain.check();
 
   Core.RefreshTitle(p2pSocketServer);
 })();
