@@ -18,7 +18,7 @@ let Config = {
     difficultyTarget:           "60",                       // This is the difficulty target, also known as the amount of seconds it takes to mine a block
     maxBlocks:                  300000000,                  // * Maximum blocks possible on the chain
 
-    premineAmount:              100000000                   // Premine is specified in atomic units.
+    premineAmount:              100000000                   // (1.00000000 IND) Premine is specified in atomic units.
 }
 
 module.exports = Config;
