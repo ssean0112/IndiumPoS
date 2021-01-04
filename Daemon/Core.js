@@ -109,6 +109,7 @@ var Core = {
   RefreshTitle: function (server) {
     setInterval(function() {
       setTitle(`${Config.coinName} Daemon v${Config.buildVersion} ${Config.buildName} | P2P: ${server.engine.clientsCount}/0`);
+      setTitle(`${Config.coinName} Daemon v${Config.buildVersion} ${Config.buildName} | P2P: ${server.engine.clientsCount}/0 | Height: ${Core.currentSyncHeight}`);
     }, 2000);
   },
 }
