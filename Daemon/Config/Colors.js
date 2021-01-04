@@ -10,7 +10,10 @@ let Colors = {
     celadon:        '#ACF7C1',
     keppel:         '#49BEAA',
     mustard:        '#FCD757',
-    celeste:        '#A9FFF7'
+    celeste:        '#A9FFF7',
+
+    black:          '#000000',
+    white:          '#FFFFFF'
 }
 
 module.exports = Colors;
