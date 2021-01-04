@@ -25,6 +25,23 @@ var Core = {
     console.log('    ' + chalk.hex(Colors.standardLight)(`${Config.coinName} Daemon v${JsonPackage.version}         Copyright © 2020, ${JsonPackage.author}  `));
     console.log('    ' + chalk.hex(Colors.standardLight)(`${Config.buildName}\n`));
   },
+
+  showHelp: function () {
+    console.log(`Usage:\n  ./${Config.coinName} [OPTION...]\n`);
+    
+    console.log(` Core options:`);
+    console.log(`    -help                                         Display this help message`);
+    console.log(`    -version                                      Display the version of the software\n`);
+    
+    console.log(` Daemon options:`);
+    console.log(`    -blockchain=<folder>                          Specify the <folder> with a folder name\n`);
+
+    console.log(` Network options:`);
+    console.log(`    -p2p-port=<port>                              TCP Port for the P2P connection`);
+    console.log(`    -rpc-port=<port>                              TCP Port for the RPC connection`);
+    
+    process.exit();
+  },
   makeRandomId: function (length) {
     var result = '';
     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
