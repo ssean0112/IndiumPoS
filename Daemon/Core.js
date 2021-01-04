@@ -91,6 +91,11 @@ var Core = {
       if(val.startsWith("-version")) { Core.argVersion = true; }
     });
   },
+
+  Sleep: function (ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  },
+
   makeRandomId: function (length) {
     var result = '';
     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
