@@ -50,6 +50,37 @@ var Core = {
     console.log(chalk.hex(Colors.standard)(`${Config.coinName} Daemon v${Config.buildVersion} ${Config.buildName}`))
     process.exit();
   },
+
+  Init: function () {
+    // Check for 'blockchain' directory
+    if (!fs.existsSync("./" + (Core.argBlockchainFolder ? Core.argBlockchainFolder : 'blockchain'))) {
+      fs.mkdirSync("./" + (Core.argBlockchainFolder ? Core.argBlockchainFolder : 'blockchain'));
+    }
+
+    fs.open('./' + (Core.argBlockchainFolder ? Core.argBlockchainFolder : 'blockchain') + '/p2p.json', 'r', function (err, fd) {
+      if (err) {
+        fs.writeFile('./' + (Core.argBlockchainFolder ? Core.argBlockchainFolder : 'blockchain') + '/p2p.json', '', function (err) {
+          if (err) {
+            console.log(err);
+          }
+          console.log("The file was saved!");
+        });
+      } else {
+        try {
+          data = fs.readFileSync('./' + (Core.argBlockchainFolder ? Core.argBlockchainFolder : 'blockchain') + '/p2p.json');
+          data = JSON.parse(data);
+          Core.Log(chalk.hex(Colors.keppel), 'P2P', `'p2p.json' has been found with ${data.p2p.length} peer(s)!`);
+          Core.p2pJson = data;
+        } catch (e) {
+          Core.Log(chalk.hex(Colors.amaranthPurple), 'P2P', `'p2p.json' is invalid. Creating new one.`);
+          fs.writeFile('./' + (Core.argBlockchainFolder ? Core.argBlockchainFolder : 'blockchain') + '/p2p.json', `{\n  "p2p": [\n  ]\n}`, function (err) {
+          });
+        }
+      }
+    });
+
+    Core.daemonIdentifier = this.makeRandomId(16);
+  },
   makeRandomId: function (length) {
     var result = '';
     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
