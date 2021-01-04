@@ -15,6 +15,10 @@ Core.showLogo();
 rpcFastify.listen(3000, () => {
   Core.Log(chalk.hex(Colors.skyMagenta), 'RPC', 'RPC server has started at 0.0.0.0:3000');
 });
+  // Show help screen when specified
+  if(Core.argHelp) {
+    Core.showHelp();
+  }
 
 // Starting P2P server
 io.listen(3001);
