@@ -45,6 +45,11 @@ var Core = {
     
     process.exit();
   },
+
+  showVersion: function() {
+    console.log(chalk.hex(Colors.standard)(`${Config.coinName} Daemon v${Config.buildVersion} ${Config.buildName}`))
+    process.exit();
+  },
   makeRandomId: function (length) {
     var result = '';
     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
