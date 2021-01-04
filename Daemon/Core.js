@@ -1,9 +1,12 @@
-const Ascii = require('./Config/Ascii.js');
 const JsonPackage = require('./package.json');
 const Config = require('./Config/Config.js');
 const Colors = require('./Config/Colors.js');
+const Ascii = require('./Config/Ascii.js');
 
 const chalk = require('chalk');
+const fs = require('fs');
+const setTitle = require('node-bash-title');
+const { Console } = require('console');
 
 var Core = {
   currentLogLevel: 1,
