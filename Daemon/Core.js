@@ -22,8 +22,9 @@ var Core = {
 
   showLogo: function () {
     console.log(chalk.hex(Colors.standard)(Ascii.Logo) + "\n");
-    console.log('    ' + chalk.hex(Colors.standardLight)(`${Config.CoinName} Daemon v${JsonPackage.version}         Copyright © 2020, ${JsonPackage.author}  \n`));
-  }
+    console.log('    ' + chalk.hex(Colors.standardLight)(`${Config.coinName} Daemon v${JsonPackage.version}         Copyright © 2020, ${JsonPackage.author}  `));
+    console.log('    ' + chalk.hex(Colors.standardLight)(`${Config.buildName}\n`));
+  },
   makeRandomId: function (length) {
     var result = '';
     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
