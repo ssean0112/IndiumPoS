@@ -70,7 +70,8 @@ let Blockchain = {
           process.exit();
         }
 
-        // Set current height
+        // Set current height and block
+        Core.currentBlock = block;
         Core.currentSyncHeight = i;
       }
     }
