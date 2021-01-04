@@ -81,6 +81,16 @@ var Core = {
 
     Core.daemonIdentifier = this.makeRandomId(16);
   },
+
+  InitArguments: function () {
+    process.argv.slice(2).forEach(function (val, index, array) {
+      if(val.startsWith("-rpc-port=")) { Core.argRpcPort = val.split('=')[1]; Number(Core.argPort); }
+      if(val.startsWith("-p2p-port=")) { Core.argP2pPort = val.split('=')[1]; Number(Core.argPort); }
+      if(val.startsWith("-blockchain=")) { Core.argBlockchainFolder = val.split('=')[1]; }
+      if(val.startsWith("-help")) { Core.argHelp = true; }
+      if(val.startsWith("-version")) { Core.argVersion = true; }
+    });
+  },
   makeRandomId: function (length) {
     var result = '';
     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
