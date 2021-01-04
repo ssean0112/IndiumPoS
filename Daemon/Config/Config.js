@@ -13,6 +13,7 @@ let Config = {
     buildName:                  "BlueDragon",               // This is the build name
 
     difficultyTarget:           "60",                       // This is the difficulty target, also known as the amount of seconds it takes to mine a block
+    maxBlocks:                  300000000,                  // * Maximum blocks possible on the chain
 
     premineAmount:              10000                       // Premine is specified in atomic units.
 }
